@@ -16,7 +16,7 @@ import assign_subject
 #  Creating an array for subjects for mapping
 subjects = ['DM', 'NLP', 'AI', 'SDA', 'IP',
             'BD', 'GM', 'ML', 'EC', 'WMC', 'CC']
-prefrences = [[] for x in subjects] 
+prefrences = [[] for x in subjects]
 
 try:
     asubj = assign_subject.AssignSubject()
@@ -28,14 +28,13 @@ try:
         for pref in student[1:]:
             prefrences[subjects.index(pref.strip())].append(student_no)
     allocations = asubj.count_allocations(student_no, prefrences, subjects)
+    print(allocations)
 except FileNotFoundError as fe:
     print(fe)
 except IOError as ioe:
     print(ioe)
 finally:
     input_file.close()
-
-print(prefrences)
 
 
 # # Print number of allocations
