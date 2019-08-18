@@ -28,7 +28,6 @@ try:
         for pref in student[1:]:
             prefrences[subjects.index(pref.strip())].append(student_no)
     allocations = asubj.count_allocations(student_no, prefrences, subjects)
-    print(allocations)
 except FileNotFoundError as fe:
     print(fe)
 except IOError as ioe:
