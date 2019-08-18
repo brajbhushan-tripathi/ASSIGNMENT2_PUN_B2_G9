@@ -37,15 +37,15 @@ finally:
     input_file.close()
 
 
-# # Print number of allocations
-# try:
-#     output_file = open("../outputPS4.txt", "w+")
-#     output_file.write(
-#         'The total number of allocations possible is: ' + str(allocations))
-#     output_file.close()
-# except FileNotFoundError as fe:
-#     print(fe)
-# except IOError as ioe:
-#     print(ioe)
-# finally:
-#     output_file.close()
+# Print number of allocations
+try:
+    output_file = open("../outputPS4.txt", "w+")
+    output_file.write(
+        'The total number of allocations possible is: ' + str(allocations))
+    output_file.close()
+except FileNotFoundError as fe:
+    print(fe)
+except IOError as ioe:
+    print(ioe)
+finally:
+    output_file.close()
