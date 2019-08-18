@@ -16,19 +16,18 @@ import assign_subject
 #  Creating an array for subjects for mapping
 subjects = ['DM', 'NLP', 'AI', 'SDA', 'IP',
             'BD', 'GM', 'ML', 'EC', 'WMC', 'CC']
-prefrences = []
+prefrences = [[] for x in subjects] 
 
 try:
     asubj = assign_subject.AssignSubject()
+    student_no = 0
     input_file = open("../inputPS4.txt")
-    studentPreference = {}
     for record in input_file.readlines():
+        student_no += 1
         student = record.split(" / ")
-        studentPref = [0] * 11
         for pref in student[1:]:
-            studentPref[subjects.index(pref.strip())] = 1
-        prefrences.append(studentPref)
-    allocations = asubj.count_allocations(prefrences)
+            prefrences[subjects.index(pref.strip())].append(student_no)
+    allocations = asubj.count_allocations(student_no, prefrences, subjects)
 except FileNotFoundError as fe:
     print(fe)
 except IOError as ioe:
@@ -36,15 +35,18 @@ except IOError as ioe:
 finally:
     input_file.close()
 
-# Print number of allocations
-try:
-    output_file = open("../outputPS4.txt", "w+")
-    output_file.write(
-        'The total number of allocations possible is: ' + str(allocations))
-    output_file.close()
-except FileNotFoundError as fe:
-    print(fe)
-except IOError as ioe:
-    print(ioe)
-finally:
-    output_file.close()
+print(prefrences)
+
+
+# # Print number of allocations
+# try:
+#     output_file = open("../outputPS4.txt", "w+")
+#     output_file.write(
+#         'The total number of allocations possible is: ' + str(allocations))
+#     output_file.close()
+# except FileNotFoundError as fe:
+#     print(fe)
+# except IOError as ioe:
+#     print(ioe)
+# finally:
+#     output_file.close()
