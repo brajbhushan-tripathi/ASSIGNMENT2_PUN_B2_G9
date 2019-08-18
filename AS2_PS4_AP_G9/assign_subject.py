@@ -21,15 +21,14 @@ class AssignSubject:
 
         for stud in preferences[sub_no]:
 
-            if mask & (1 << stud - 1):
+            if mask & (1 << (stud - 1)):
                 continue
-
             ways += self.countAllocationRec(allocations, preferences,
                                             subjects, mask | (1 << (stud - 1)), sub_no + 1)
 
             ways = ways % (10**9 + 7)
 
-        allocations[mask][sub_no-1] = ways
+        allocations[mask][sub_no] = ways
 
         return allocations[mask][sub_no]
 
