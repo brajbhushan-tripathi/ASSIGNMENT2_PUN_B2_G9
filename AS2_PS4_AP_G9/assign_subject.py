@@ -10,7 +10,7 @@ class AssignSubject:
         if mask == self.allmask:
             return 1
 
-        if sub_no + 1 >= self.total_subjects:
+        if sub_no + 1 > self.total_subjects:
             return 0
 
         if allocations[mask][sub_no] != -1:
