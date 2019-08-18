@@ -36,7 +36,6 @@ finally:
     input_file.close()
 
 
-# Print number of allocations
 try:
     output_file = open("../outputPS4.txt", "w+")
     output_file.write(
