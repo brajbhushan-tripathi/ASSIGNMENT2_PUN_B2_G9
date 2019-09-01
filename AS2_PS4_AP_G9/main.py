@@ -18,7 +18,7 @@ subjects = ['DM', 'NLP', 'AI', 'SDA', 'IP',
             'BD', 'GM', 'ML', 'EC', 'WMC', 'CC']
 prefrences = [[] for x in subjects]
 
-# Reading student preferences from the input file and creating list of students who preferred that subject, and we're creating list for each subject
+# Reading student preferences from the input file and creating list of students who prefer each subject,
 # so it will be a list of lists
 
 try:
