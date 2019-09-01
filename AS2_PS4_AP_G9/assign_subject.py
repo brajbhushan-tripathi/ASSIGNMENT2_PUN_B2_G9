@@ -16,8 +16,7 @@ class AssignSubject:
         if allocations[mask][sub_no] != -1:
             return allocations[mask][sub_no]
 
-        ways = self.countAllocationRec(
-            allocations, preferences, subjects, mask, sub_no + 1)
+        ways = 0
 
         for stud in preferences[sub_no]:
 
