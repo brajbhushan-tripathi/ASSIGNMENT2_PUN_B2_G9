@@ -5,7 +5,7 @@ class AssignSubject:
         self.allmask = 0
         self.total_subjects = 11
 
-    def countAllocationRec(self, allocations, preferences, subjects, mask, sub_no):
+    def count_allocations(self, allocations, preferences, subjects, mask, sub_no):
 
         if mask == self.allmask:
             return 1
@@ -22,8 +22,8 @@ class AssignSubject:
 
             if mask & (1 << (stud - 1)):
                 continue
-            ways += self.countAllocationRec(allocations, preferences,
-                                            subjects, mask | (1 << (stud - 1)), sub_no + 1)
+            ways += self.count_allocations(allocations, preferences,
+                                           subjects, mask | (1 << (stud - 1)), sub_no + 1)
 
             ways = ways % (10**9 + 7)
 
@@ -31,9 +31,9 @@ class AssignSubject:
 
         return allocations[mask][sub_no]
 
-    def count_allocations(self, no_of_students, preferences, subjects):
+    def get_total_allocations(self, no_of_students, preferences, subjects):
         self.allmask = (1 << no_of_students) - 1
 
         allocations = [[-1 for j in range(self.total_subjects + 1)]
                        for i in range(2 ** no_of_students)]
-        return self.countAllocationRec(allocations, preferences, subjects, 0, 0)
+        return self.count_allocations(allocations, preferences, subjects, 0, 0)

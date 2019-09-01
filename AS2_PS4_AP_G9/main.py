@@ -13,10 +13,13 @@ import assign_subject
 # 10. Wireless Mobile communication
 # 11. Cloud computing
 
-#  Creating an array for subjects for mapping
+#  Creating an array of subjects for mapping
 subjects = ['DM', 'NLP', 'AI', 'SDA', 'IP',
             'BD', 'GM', 'ML', 'EC', 'WMC', 'CC']
 prefrences = [[] for x in subjects]
+
+# Reading student preferences from the input file and creating list of students who preferred that subject, and we're creating list for each subject
+# so it will be a list of lists
 
 try:
     asubj = assign_subject.AssignSubject()
@@ -27,7 +30,7 @@ try:
         student = record.split(" / ")
         for pref in student[1:]:
             prefrences[subjects.index(pref.strip())].append(student_no)
-    allocations = asubj.count_allocations(student_no, prefrences, subjects)
+    allocations = asubj.get_total_allocations(student_no, prefrences, subjects)
 except FileNotFoundError as fe:
     print(fe)
 except IOError as ioe:
@@ -35,6 +38,7 @@ except IOError as ioe:
 finally:
     input_file.close()
 
+# writing output to the file, the output will be the total number of allocations possible as per the input
 
 try:
     output_file = open("../outputPS4.txt", "w+")
